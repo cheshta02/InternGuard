@@ -1,3 +1,21 @@
+const internGuardPoints = [
+  {
+    id: 1,
+    title: "Evaluate before you apply",
+    description: "Understand an internship opportunity and identify possible warning signs before moving forward.",
+  },
+  {
+    id: 2,
+    title: "Make decisions with confidence",
+    description: "Get a clearer view of an opportunity so you can decide whether it is worth your time.",
+  },
+  {
+    id: 3,
+    title: "Find opportunities that matter",
+    description: "Explore opportunities with a focus on relevance, quality, and student value.",
+  },
+];
+
 const WhatInternGuardIs = () => {
   return (
     <section className="what-intern-guard" id="what-intern-guard">
@@ -5,40 +23,29 @@ const WhatInternGuardIs = () => {
         <div className="what-intern-guard-content">
           <span className="section-label">What is InternGuard?</span>
 
-          <h2>A smarter way to make<span> better internship decisions.</span></h2>
-
+          <h2>A smarter way to make <span> better internship decisions.</span></h2>
           <p>
-            InternGuard is a platform built to help students evaluate internship opportunities before investing their time and effort.Instead of relying only on job descriptions or promises made by recruiters, InternGuard helps students look at opportunity from multiple perspectives.
+            InternGuard is a platform built to help students evaluate internship opportunities before investing their time and effort.
+            Instead of relying only on job descriptions or promises made by recruiters, InternGuard helps students look at an opportunity from multiple perspectives.
           </p>
-
           <p>
-            From identifying potential risks to exploring relevant opportunities, InternGuard brings the information students need into one simple platform. The goal is not to decide for you, but to help you make a more informed decision.
+            From identifying potential risks to exploring relevant opportunities, InternGuard brings the information students need
+            into one simple platform. The goal is not to decide for you, but to help you make a more informed decision.
           </p>
 
           <div className="what-intern-guard-points">
-            <div className="what-point">
-              <span className="point-number">01</span>
-              <div>
-                <h3>Evaluate before you apply</h3>
-                <p>Understand an internship opportunity and identify possible warning signs before moving forward.</p>
-              </div>
-            </div>
+            {internGuardPoints.map((point) => (
+              <div className="what-point" key={point.id}>
+                <span className="point-number">
+                  {String(point.id).padStart(2, "0")}
+                </span>
 
-            <div className="what-point">
-              <span className="point-number">02</span>
-              <div>
-                <h3>Make decisions with confidence</h3>
-                <p>Get a clearer view of an opportunity so you can decide whether it is worth your time.</p>
+                <div>
+                  <h3>{point.title}</h3>
+                  <p>{point.description}</p>
+                </div>
               </div>
-            </div>
-
-            <div className="what-point">
-              <span className="point-number">03</span>
-              <div>
-                <h3>Find opportunities that matter</h3>
-                <p>Explore opportunities with a focus on relevance, quality,and student value.</p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
 
@@ -51,7 +58,8 @@ const WhatInternGuardIs = () => {
 
             <div className="guard-card-main">
               <span className="guard-card-label">Before you commit</span>
-              <h3>Know what<br />you're getting into.</h3>
+
+              <h3>Know what <br /> you're getting into.</h3>
               <p>Your time, effort, and career choices deserve more than a quick look at an internship listing.</p>
             </div>
 
