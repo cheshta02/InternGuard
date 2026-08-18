@@ -1,71 +1,62 @@
-function Testimonials() {
-  const testimonials = [
-    {
-      quote:
-        "InternGuard gives me a simple way to check an internship before I share my personal information or spend time applying.",
-      title: "Student Perspective",
-      role: "Internship Safety",
-    },
-    {
-      quote:
-        "The red flags are easier to understand when they are explained clearly. It helps me slow down and look at an offer more carefully.",
-      title: "Student Perspective",
-      role: "Scam Awareness",
-    },
-    {
-      quote:
-        "Having safer internship listings in one place makes searching less stressful and gives me more confidence about where I apply.",
-      title: "Student Perspective",
-      role: "Opportunity Search",
-    },
-    {
-      quote:
-        "Instead of accepting an internship offer immediately, I can use InternGuard to verify the details and make a more informed decision.",
-      title: "Student Perspective",
-      role: "Decision Support",
-    },
-  ];
+const testimonials = [
+  {
+    id: 1,
+    name: "Rahul Sharma",
+    role: "Computer Science Student",
+    text: "InternGuard helped me quickly identify suspicious internship postings and avoid wasting time on unreliable opportunities.",
+    rating: 5,
+  },
+  {
+    id: 2,
+    name: "Priya Verma",
+    role: "Final Year Student",
+    text: "The risk analysis feature makes it much easier to understand whether an internship opportunity looks trustworthy before applying.",
+    rating: 5,
+  },
+  {
+    id: 3,
+    name: "Arjun Mehta",
+    role: "Software Engineering Student",
+    text: "I like how simple the platform is. Instead of manually checking every detail, I can get a quick overview of the potential risks.",
+    rating: 4,
+  },
+];
 
+const Testimonial = () => {
   return (
-    <section id="testimonials" className="testimonials">
+    <section className="testimonial">
+      <div className="testimonial-container">
 
-      <div id="testimonials-header" className="testimonials-header">
-        <p className="testimonials-label">
-          STUDENT VOICES
-        </p>
+        <div className="testimonial-header">
+          <span className="section-label">TESTIMONIALS</span>
+          <h2> What Students <span>Say</span></h2>
+          <p> See how InternGuard helps students make safer and more informed internship decisions.</p>
+        </div>
 
-        <h2>
-          Making Internship Search Safer
-        </h2>
-      </div>
+        <div className="testimonial-grid">
+          {testimonials.map((testimonial) => (
+            <div className="testimonial-card" key={testimonial.id}>
 
-      <div id="testimonials-list" className="testimonials-list">
-        {testimonials.map((testimonial, index) => (
-          <div
-            key={index}
-            className="testimonial-card"
-          >
-            <span className="testimonial-quote">“</span>
+              <div className="testimonial-rating"> {"★".repeat(testimonial.rating)} </div>
 
-            <p className="testimonial-text">
-            </p>
+              <p className="testimonial-text">"{testimonial.text}"</p>
 
-            <div className="testimonial-user">
-              <div className="testimonial-initial">
-                IG
+              <div className="testimonial-user">
+                <div className="testimonial-avatar">{testimonial.name.charAt(0)}</div>
+
+                <div>
+                  <h4>{testimonial.name}</h4>
+                  <span>{testimonial.role}</span>
+                </div>
               </div>
 
-              <div>
-                <h4>{testimonial.title}</h4>
-                <p>{testimonial.role}</p>
-              </div>
             </div>
-          </div>
-        ))}
-      </div>
+          ))}
+        </div>
 
+      </div>
     </section>
   );
-}
+};
 
-export default Testimonials;
+export default Testimonial;
