@@ -30,7 +30,7 @@ const Testimonial = () => {
         <div className="testimonial-header">
           <span className="section-label">TESTIMONIALS</span>
           <h2> What Students <span>Say</span></h2>
-          <p> See how InternGuard helps students make safer and more informed internship decisions.</p>
+          <p> Discover how InternGuard helps students identify potential risks, avoid unverified listings, and navigate their career decisions with complete confidence.</p>
         </div>
 
         <div className="testimonial-grid">

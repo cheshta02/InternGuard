@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
-
+import "../../styles/footer.css";
 function Footer() {
   return (
     <footer id="footer" className="footer">
-
+    <div id="footer-content" className="footer-content">
       {/* Logo and Description */}
       <div id="footer-logo" className="footer-logo">
         <Link to="/">
@@ -15,9 +15,6 @@ function Footer() {
           with confidence.
         </p>
       </div>
-
-      {/* Footer Content */}
-      <div id="footer-content" className="footer-content">
 
         {/* Quick Links */}
         <div id="footer-quick-links" className="footer-section">
@@ -39,7 +36,7 @@ function Footer() {
           <p className="footer-text">InternGuard Support</p>
 
         </div>
-
+    
         {/* Social Links */}
         <div id="footer-social" className="footer-section">
           <h4>Follow Us</h4>
@@ -52,7 +49,7 @@ function Footer() {
 
         </div>
 
-      </div>
+    </div>
 
       {/* Copyright */}
       <div id="footer-bottom" className="footer-bottom">

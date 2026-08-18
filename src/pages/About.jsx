@@ -3,6 +3,7 @@ import WhatInternGuardIs from "../components/about/WhatInternGuardIs";
 import MissionSection from "../components/about/MissionSection";
 import Journey from "../components/about/Journey";
 import FAQ from "../components/about/FAQ";
+import "../styles/about.css";
 
 function About() {
   return (

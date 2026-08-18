@@ -36,6 +36,7 @@ const FAQ = () => {
     <section className="faq" id="faq">
       <div className="faq-head">
         <span className="faq-tag">FAQ</span>
+        <h2>Questions, answered.</h2>
         <p>
           Everything you need to know about InternGuard and how it helps students make safer internship decisions.
         </p>

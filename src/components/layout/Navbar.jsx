@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 import { useAuth } from "../../context/AuthContext";
 import ProfileDrawer from "./ProfileDrawer";
-
+import "../../styles/navbar.css";
 function Navbar() {
   const { user } = useAuth();
 
