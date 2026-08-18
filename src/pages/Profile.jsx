@@ -1,5 +1,25 @@
-function Profile() {
-  return <div>Profile page coming soon...</div>;
-}
+import { useState } from "react";
+import { useAuth } from "../context/AuthContext";
 
-export default Profile;
+import ProfileOverview from "../components/profile/ProfileOverview";
+import AnalysisHistory from "../components/profile/AnalysisHistory";
+
+export default function Profile() {
+  const { user } = useAuth();
+
+  const [profilePicture, setProfilePicture] = useState(
+    user?.profilePicture || ""
+  );
+
+  return (
+    <main className="profile-page">
+      <ProfileOverview
+        user={user}
+        profilePicture={profilePicture}
+        onProfilePictureChange={setProfilePicture}
+      />
+
+      <AnalysisHistory />
+    </main>
+  );
+}

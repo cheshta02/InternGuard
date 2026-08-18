@@ -1,6 +1,6 @@
 import { useRef, useState } from "react";
 
-const Analyze = () => {
+const AnalysisForm = () => {
   const [text, setText] = useState("");
   const [files, setFiles] = useState([]);
   const [isGenerating, setIsGenerating] = useState(false);
@@ -107,31 +107,30 @@ const Analyze = () => {
         <div className="analysis-toolbar">
           <div className="analysis-tools">
 
-            <input ref={cameraInputRef} type="file" accept="image/*" capture="environment" hidden onChange={handleCameraChange} disabled={isGenerating} >
+            <input ref={cameraInputRef} type="file" accept="image/*" capture="environment" hidden onChange={handleCameraChange} disabled={isGenerating} />
 
-              <button type="button" className="camera-button" onClick={handleCameraClick} disabled={isGenerating} aria-label="Take or upload a photo"
-              title="Take photo">
+            <button type="button" className="camera-button" onClick={handleCameraClick} disabled={isGenerating} aria-label="Take or upload a photo"
+            title="Take photo">
 
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <path d="M4 7h3l1.5-2h7L17 7h3v11H4V7Z" />
-                  <circle cx="12" cy="12.5" r="3.2" />
-                </svg>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <path d="M4 7h3l1.5-2h7L17 7h3v11H4V7Z" />
+                <circle cx="12" cy="12.5" r="3.2" />
+              </svg>
 
-              </button>
-            </input>
+            </button>
 
-            <input ref={fileInputRef} type="file" multiple hidden onChange={handleFileChange} disabled={isGenerating}>
+            <input ref={fileInputRef} type="file" multiple hidden onChange={handleFileChange} disabled={isGenerating} />
 
-              <button type="button" className="file-button" onClick={handleFileClick} disabled={isGenerating}>
+            <button type="button" className="file-button" onClick={handleFileClick} disabled={isGenerating}>
 
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
-                  <path d="M21 12.5v5A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5v-11A2.5 2.5 0 0 1 5.5 4H12" />
-                  <path d="M16 3v6m-3-3h6" />
-                </svg>
-                <span>Attach</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
+                <path d="M21 12.5v5A2.5 2.5 0 0 1 18.5 20h-13A2.5 2.5 0 0 1 3 17.5v-11A2.5 2.5 0 0 1 5.5 4H12" />
+                <path d="M16 3v6m-3-3h6" />
+              </svg>
+              <span>Attach</span>
 
-              </button>
-            </input>
+            </button>
+            
           </div>
 
           <button type="submit" className="generate-button" disabled={!canGenerate || isGenerating}>
@@ -145,4 +144,4 @@ const Analyze = () => {
   );
 };
 
-export default Analyze;
+export default AnalysisForm;

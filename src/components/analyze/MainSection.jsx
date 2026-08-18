@@ -13,3 +13,5 @@ const MainSection = ()=>{
     </section>
   );
 }
+
+export default MainSection ;

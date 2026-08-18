@@ -1,5 +1,5 @@
-import MainSection from "../components/analyse/MainSection";
-import AnalysisForm from "../components/analyse/AnalysisForm";
+import MainSection from "../components/analyze/MainSection";
+import AnalysisForm from "../components/analyze/AnalysisForm";
 
 const Analyze = () => {
   return (

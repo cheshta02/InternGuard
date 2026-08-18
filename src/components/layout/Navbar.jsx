@@ -1,6 +1,11 @@
 import { Link } from "react-router-dom";
 
+import { useAuth } from "../../context/AuthContext";
+import ProfileDrawer from "./ProfileDrawer";
+
 function Navbar() {
+  const { user } = useAuth();
+
   return (
     <header id="navbar" className="navbar">
 
@@ -10,23 +15,38 @@ function Navbar() {
         </Link>
       </div>
 
-
       <div id="navbar-content" className="navbar-content">
 
         <nav id="navbar-links" className="navbar-links">
-          <Link to="/" className="navbar-link">Home</Link>
+          <Link to="/" className="navbar-link">
+            Home
+          </Link>
 
-          <Link to="/analyze" className="navbar-link">Analyze</Link>
+          <Link to="/analyze" className="navbar-link">
+            Analyze
+          </Link>
 
-          <Link to="/directory" className="navbar-link">Scam insights</Link>
+          <Link to="/directory" className="navbar-link">
+            Scam insights
+          </Link>
 
-          <Link to="/opportunities" className="navbar-link">Opportunities</Link>
+          <Link to="/opportunities" className="navbar-link">
+            Opportunities
+          </Link>
 
-          <Link to="/about" className="navbar-link">About Us</Link>
+          <Link to="/about" className="navbar-link">
+            About Us
+          </Link>
         </nav>
 
         <div id="navbar-actions" className="navbar-actions">
-          <Link to="/auth" className="navbar-register">Register Now</Link>
+          {user ? (
+            <ProfileDrawer />
+          ) : (
+            <Link to="/register" className="navbar-register">
+              Register Now
+            </Link>
+          )}
         </div>
 
       </div>
