@@ -1,0 +1,254 @@
+.analyze-section {
+    position: relative;
+    width: 100%;
+    padding: var(--space-4xl, 5rem) var(--content-padding, 2rem) var(--space-4xl, 6rem);
+    background:
+        linear-gradient(180deg,
+            rgba(11, 31, 51, 0.94) 0%,
+            rgba(7, 21, 36, 0.98) 100%),
+        url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?q=80&w=2070') center/cover no-repeat;
+
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+}
+
+.analyze-section::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 60vw;
+    height: 60vh;
+    background: radial-gradient(circle,
+            rgba(24, 166, 166, 0.18) 0%,
+            transparent 70%);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.analyze-header {
+    position: relative;
+    z-index: 2;
+    width: min(var(--content-width, 760px), 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.analyze-label {
+    display: inline-block;
+    margin-bottom: var(--space-md, 1rem);
+    padding: 0.35rem 1rem;
+    background: rgba(24, 166, 166, 0.15);
+    color: #5eead4;
+    font-family: var(--font-primary);
+    font-size: var(--font-size-xs);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    border: 1px solid rgba(24, 166, 166, 0.3);
+    border-radius: var(--radius-full, 999px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.analyze-header h1 {
+    color: #ffffff;
+    font-family: var(--font-primary, "Poppins", sans-serif);
+    font-size: clamp(2.5rem, 5.5vw, 3.75rem);
+    font-weight: 800;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md, 1rem);
+}
+
+.analyze-header h1 span {
+    color: #5eead4;
+    display: inline-block;
+}
+
+
+.analyze-header p {
+    color: #94a3b8;
+    font-family: var(--font-primary, "Poppins", sans-serif);
+    font-size: clamp(0.95rem, 1.8vw, 1.1rem);
+    line-height: 1.6;
+    max-width: 620px;
+    margin: 0 auto;
+}
+
+.analysis-box {
+    width: min(var(--content-width), 100%);
+    margin: 0 auto;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--shadow-md);
+    padding: var(--space-xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.analysis-box:focus-within {
+    border-color: var(--color-accent);
+    box-shadow: var(--shadow-lg);
+}
+
+.analysis-input {
+    width: 100%;
+    min-height: 140px;
+    background: transparent;
+    border: none;
+    outline: none;
+    resize: vertical;
+    color: var(--color-text-primary);
+    font-family: var(--font-primary);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-relaxed);
+}
+
+.analysis-input::placeholder {
+    color: var(--color-text-muted);
+}
+
+
+.analysis-attachments {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    padding-top: var(--space-sm);
+    border-top: 1px solid var(--color-border-light);
+}
+
+.analysis-attachment {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    background: var(--color-surface-soft);
+    border: 1px solid var(--color-border-light);
+    border-radius: var(--radius-md);
+    padding: var(--space-sm) var(--space-md);
+    max-width: 260px;
+}
+
+.attachment-image {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+}
+
+.attachment-file-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--color-accent-light);
+    color: var(--color-accent-dark);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-bold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+}
+
+.attachment-info {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex-grow: 1;
+}
+
+.attachment-name {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-primary);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.attachment-size {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
+}
+
+.remove-attachment {
+    background: transparent;
+    color: var(--color-text-muted);
+    font-size: var(--font-size-md);
+    cursor: pointer;
+    padding: 0 var(--space-xs);
+}
+
+.remove-attachment:hover {
+    color: var(--color-danger);
+}
+
+.analysis-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: var(--space-md);
+    border-top: 1px solid var(--color-border-light);
+    gap: var(--space-md);
+}
+
+.analysis-tools {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+.camera-button,
+.file-button {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
+    background: transparent;
+    color: var(--color-text-primary);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.camera-button svg,
+.file-button svg {
+    width: 20px;
+    height: 20px;
+}
+
+.camera-button:hover:not(:disabled),
+.file-button:hover:not(:disabled) {
+    background: var(--color-surface-soft);
+    color: var(--color-accent);
+}
+
+.generate-button {
+    padding: var(--space-md) var(--space-xl);
+    background: var(--color-accent);
+    color: var(--color-text-light);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-bold);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: var(--radius-md);
+    transition: background var(--transition-fast);
+}
+
+.generate-button:hover:not(:disabled) {
+    background: var(--color-accent-dark);
+}
+
+.generate-button:disabled {
+    background: var(--color-border);
+    color: var(--color-text-muted);
+    cursor: not-allowed;
+}

@@ -5,6 +5,7 @@ import ScamData from "../components/directory/ScamData";
 import DirectoryFilter from "../components/directory/DirectoryFilter";
 import ScamList from "../components/directory/ScamList";
 import ScamDetails from "../components/directory/ScamDetails";
+import "../styles/directory.css";
 
 function Directory() {
   const [scams, setScams] = useState(ScamData);
