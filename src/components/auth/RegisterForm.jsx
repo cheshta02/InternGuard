@@ -139,7 +139,7 @@ export default function RegisterForm() {
         <form onSubmit={handleSubmit} className="register-form">
             <div className="form-section">
                 <h2>Create your InternGuard account</h2>
-
+                <p className="register-intro"> Join InternGuard and start your safe journey today. </p>
                 <div className="form-group">
                     <label htmlFor="register-full-name">
                         Full Name

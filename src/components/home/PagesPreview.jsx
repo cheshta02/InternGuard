@@ -24,7 +24,7 @@ const PagePreview = () => {
         <article className="preview-card opportunity-preview">
           <span className="preview-tag">OPPORTUNITIES</span>
           <h3>Find Better Opportunities</h3>
-          <a href="/opportunities" className="preview-link">Find opportunities →</a>
+          <a href="/opportunity" className="preview-link">Find opportunities →</a>
         </article>
 
       </div>

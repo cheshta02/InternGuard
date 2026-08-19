@@ -690,3 +690,52 @@
   border-top-color: var(--color-border-light, #f1f5f9);
   padding-top: var(--space-md, 1rem);
 }
+/* FAQ Contact CTA */
+.faq-contact {
+  width: min(720px, 100%);
+  margin: var(--space-3xl, 3rem) auto 0;
+  padding: var(--space-xl, 1.5rem) 2rem;
+  background: var(--color-primary-light, #ffffff);
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: var(--radius-lg, 16px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.faq-contact-text h3 {
+  margin: 0 0 0.35rem;
+  color: var(--color-accent, #0f172a);
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.faq-contact-text p {
+  margin: 0;
+  color: var(--color-accent-light, #475569);
+  font-size: 0.95rem;
+}
+
+.faq-contact-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.8rem 1.3rem;
+  background: var(--color-primary, #0f172a);
+  color: #ffffff;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: var(--radius-md, 10px);
+  white-space: nowrap;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.faq-contact-button:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+
+.faq-contact-button span {
+  font-size: 1.2rem;
+}

@@ -129,7 +129,7 @@ function Contact() {
 
           <div className="contact-note">
             <strong>Before you apply:</strong>
-            <span>If you believe an internship may be unsafe, avoid sharing sensitive information until you have checked it.</span>
+            <span>If you believe an internship may be unsafe, avoid sharing sensitive information until you have checked it. Never share passwords, banking details, OTPs, or identity documents without verifying the employer first. Be cautious of requests for upfront payments, unusual fees, or pressure to make quick decisions. When in doubt, research the company and verify the opportunity through trusted sources.</span>
           </div>
         </div>
 

@@ -12,7 +12,7 @@ const HeroSection = () => {
           <p className="hero-text"> Discover opportunities, verify companies, and identify potential risks before you apply.</p>
 
           <div className="hero-actions">
-            <Link to="/opportunities" className="hero-btn hero-btn-main">Explore Opportunities</Link>
+            <Link to="/opportunity" className="hero-btn hero-btn-main">Explore Opportunities</Link>
             <Link to="/about" className="hero-btn hero-btn-alt">Learn More</Link>
           </div>
         </div>

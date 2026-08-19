@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import ProfilePicture from "../profile/ProfilePicture";
 import ProfileDetails from "../profile/ProfileDetails";
+import "../../styles/profile.css";
 
 export default function ProfileDrawer() {
     const navigate = useNavigate();
@@ -49,7 +50,10 @@ export default function ProfileDrawer() {
 
             {isOpen && (
                 <aside className="profile-drawer">
-
+                    <button type="button"
+                        className="profile-drawer-close"
+                        onClick={() => setIsOpen(false)}
+                        aria-label="Close profile" > × </button>
                     <ProfilePicture
                         src={profilePicture}
                         onChange={handleProfilePictureChange}

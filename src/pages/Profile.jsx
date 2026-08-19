@@ -4,6 +4,8 @@ import { useAuth } from "../context/AuthContext";
 import ProfileOverview from "../components/profile/ProfileOverview";
 import AnalysisHistory from "../components/profile/AnalysisHistory";
 
+import "../styles/profile.css";
+
 export default function Profile() {
   const { user } = useAuth();
 

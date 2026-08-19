@@ -23,8 +23,9 @@ function Footer() {
           <Link to="/" className="footer-link">Home</Link>
           <Link to="/analyze" className="footer-link">Analyze</Link>
           <Link to="/directory" className="footer-link">Scam insights</Link>
-          <Link to="/opportunities" className="footer-link">Career Hub</Link>
+          <Link to="/opportunities" className="footer-link">Opportunities</Link>
           <Link to="/about" className="footer-link">About Us</Link>
+          <Link to="/contact" className="footer-link">Contact</Link>
 
         </div>
 

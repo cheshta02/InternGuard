@@ -12,6 +12,7 @@ function Navbar() {
       <div id="navbar-logo" className="navbar-logo">
         <Link to="/">
           <img src="/assets/logo.svg" alt="InternGuard" />
+            
         </Link>
       </div>
 
@@ -30,12 +31,15 @@ function Navbar() {
             Scam insights
           </Link>
 
-          <Link to="/opportunities" className="navbar-link">
+          <Link to="/opportunity" className="navbar-link">
             Opportunities
           </Link>
 
           <Link to="/about" className="navbar-link">
             About Us
+          </Link>
+          <Link to="/contact" className="navbar-link">
+            Contact
           </Link>
         </nav>
 

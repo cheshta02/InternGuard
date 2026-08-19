@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 const faqData = [
   {
     question: "What is InternGuard?",
@@ -49,6 +50,16 @@ const FAQ = () => {
             <p>{faq.answer}</p>
           </details>
         ))}
+      </div>
+      <div className="faq-contact">
+        <div className="faq-contact-text">
+          <h3>Still have questions?</h3>
+          <p>We're here to help.</p>
+        </div>
+
+        <Link to="/contact" className="faq-contact-button">
+          Contact Us <span>→</span>
+        </Link>
       </div>
     </section>
   );
