@@ -8,27 +8,29 @@ const AnalysisForm = () => {
   const cameraInputRef = useRef(null);
   const fileInputRef = useRef(null);
 
-  const handleCameraClick = () => {
-    cameraInputRef.current?.click();
-  };
-
-  const handleFileClick = () => {
-    fileInputRef.current?.click();
-  };
-
   const addFiles = (newFiles) => {
     if (!newFiles?.length) return;
     setFiles((currentFiles) => [...currentFiles,...Array.from(newFiles),]);
   };
 
+  const handleCameraClick = () => {
+    console.log("Camera clicked");
+    cameraInputRef.current?.click();
+  };
+
+  const handleFileClick = () => {
+    console.log("File clicked");
+    fileInputRef.current?.click();
+  };
+
   const handleCameraChange = (event) => {
+    console.log("Camera changed", event.target.files);
     addFiles(event.target.files);
-    event.target.value = "";
   };
 
   const handleFileChange = (event) => {
+    console.log("File changed", event.target.files);
     addFiles(event.target.files);
-    event.target.value = "";
   };
 
   const removeFile = (indexToRemove) => {
@@ -48,7 +50,7 @@ const AnalysisForm = () => {
     setIsGenerating(true);
 
     try {
-      const formData = new FormData();        // future improvement
+      const formData = new FormData();        
       if (cleanText) {
         formData.append("text", cleanText);
       }

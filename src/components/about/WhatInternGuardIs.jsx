@@ -29,8 +29,7 @@ const WhatInternGuardIs = () => {
             Instead of relying only on job descriptions or promises made by recruiters, InternGuard helps students look at an opportunity from multiple perspectives.
           </p>
           <p>
-            From identifying potential risks to exploring relevant opportunities, InternGuard brings the information students need
-            into one simple platform. The goal is not to decide for you, but to help you make a more informed decision.
+            From identifying potential risks to exploring relevant opportunities, InternGuard brings the information students need into one simple platform. The goal is not to decide for you, but to help you make a more informed decision.
           </p>
 
           <div className="what-intern-guard-points">
@@ -58,7 +57,6 @@ const WhatInternGuardIs = () => {
 
             <div className="guard-card-main">
               <span className="guard-card-label">Before you commit</span>
-
               <h3>Know what <br /> you're getting into.</h3>
               <p>Your time, effort, and career choices deserve more than a quick look at an internship listing.</p>
             </div>

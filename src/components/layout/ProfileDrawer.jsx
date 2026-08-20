@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthContext";
 import ProfilePicture from "../profile/ProfilePicture";
 import ProfileDetails from "../profile/ProfileDetails";
 import "../../styles/profile.css";
+import profile from "../../assets/profile.svg"
 
 export default function ProfileDrawer() {
     const navigate = useNavigate();
@@ -12,15 +13,9 @@ export default function ProfileDrawer() {
 
     const [isOpen, setIsOpen] = useState(false);
 
-    const [profilePicture, setProfilePicture] = useState(
-        localStorage.getItem("profilePicture") ||
-        "/assets/default-profile.svg"
-    );
+    const [profilePicture, setProfilePicture] = useState(profile);
 
-    const handleProfilePictureChange = (picture) => {
-        setProfilePicture(picture);
-        localStorage.setItem("profilePicture", picture);
-    };
+    const handleProfilePictureChange = (picture) => { setProfilePicture(picture); };
 
     const handleHistory = () => {
         setIsOpen(false);
@@ -41,37 +36,18 @@ export default function ProfileDrawer() {
     return (
         <div className="profile-drawer-container">
 
-            <img
-                src={profilePicture}
-                alt="Profile"
-                className="profile-button"
-                onClick={() => setIsOpen(!isOpen)}
-            />
+            <img src={profilePicture} alt="Profile" className="profile-button" onClick={() => setIsOpen(!isOpen)} />
 
             {isOpen && (
                 <aside className="profile-drawer">
-                    <button type="button"
-                        className="profile-drawer-close"
-                        onClick={() => setIsOpen(false)}
-                        aria-label="Close profile" > × </button>
-                    <ProfilePicture
-                        src={profilePicture}
-                        onChange={handleProfilePictureChange}
-                    />
+                    <button type="button" className="profile-drawer-close" onClick={() => setIsOpen(false)} aria-label="Close profile" > × </button>
 
+                    <ProfilePicture  src={profilePicture}  onChange={handleProfilePictureChange}/>
                     <ProfileDetails user={user} />
 
-                    <button type="button" onClick={handleHistory}>
-                        History
-                    </button>
-
-                    <button type="button" onClick={handleUpgrade}>
-                        Upgrade Plan
-                    </button>
-
-                    <button type="button" onClick={handleLogout}>
-                        Sign Out
-                    </button>
+                    <button type="button" onClick={handleHistory}> History </button>
+                    <button type="button" onClick={handleUpgrade}> Upgrade Plan</button>
+                    <button type="button" onClick={handleLogout}> Sign Out</button>
 
                 </aside>
             )}

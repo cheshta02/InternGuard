@@ -13,9 +13,7 @@ export default function PlanCard({
                 <span>{duration}</span>
             </div>
 
-            <div className="plan-price">
-                <strong>{price}</strong>
-            </div>
+            <div className="plan-price"> <strong>{price}</strong> </div>
 
             <ul className="plan-features">
                 {features.map((feature) => (
@@ -23,11 +21,7 @@ export default function PlanCard({
                 ))}
             </ul>
 
-            <button
-                type="button"
-                onClick={onSelect}
-                className="plan-select-button"
-            >
+            <button type="button" onClick={onSelect} className="plan-select-button">
                 {selected ? "Selected" : "Choose Plan"}
             </button>
         </div>

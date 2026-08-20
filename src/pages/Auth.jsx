@@ -8,40 +8,30 @@ export default function Auth() {
   const { user } = useAuth();
   const location = useLocation();
 
-  if (user) {
-    return <Navigate to="/" replace />;
-  }
+  if (user) {return <Navigate to="/" replace />;}
 
   const isRegister = location.pathname === "/register";
 
- return (
-  <main className="auth-page">
-    {isRegister ? (
-      <div className="register-container">
-        <div className="register-card-wrapper">
+  return (
+    <main className="auth-page">
+      {isRegister ? (
+        <div className="register-container">
+          <div className="register-card-wrapper">
 
-          <div className="register-left-panel">
-            <div className="register-left-content">
-              <h1>
-                Opportunities
-                <span> Meet Security</span>
-              </h1>
-
-              <p>
-                InternGuard helps you find verified internships
-                and protects you from scams.
-              </p>
+            <div className="register-left-panel">
+              <div className="register-left-content">
+                <h1> Opportunities <span> Meet Security</span> </h1>
+                <p> InternGuard helps you find verified internships and protects you from scams. </p>
+              </div>
             </div>
+
+            <RegisterForm />
+
           </div>
-
-          <RegisterForm />
-
         </div>
-      </div>
-    ) : (
-      <LoginForm />
-    )}
-  </main>
-);
-    
+      ) : (
+        <LoginForm />
+      )}
+    </main>
+  );
 }

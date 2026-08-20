@@ -55,8 +55,7 @@ export default function PlanSelector({
             </label>
 
             <p className="plan-selector-note">
-                Free features are available to everyone. Upgrade to Guard+ for
-                premium features.
+                Free features are available to everyone. Upgrade to Guard+ for premium features.
             </p>
 
             <div className="plan-cards">

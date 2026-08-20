@@ -80,9 +80,7 @@
   --z-modal: 1000;
 }
 
-*,
-*::before,
-*::after {
+*, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -100,21 +98,13 @@ body {
   font-size: var(--font-size-base);
   font-weight: var(--font-weight-regular);
   line-height: var(--line-height-normal);
-  -webkit-font-smoothing: antialiased;
-  text-rendering: optimizeLegibility;
 }
 
 #root {
   min-height: 100vh;
 }
 
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+h1,h2,h3,h4,h5,h6 {
   color: var(--color-text-primary);
   font-family: var(--font-primary);
   font-weight: var(--font-weight-bold);
@@ -138,10 +128,7 @@ a {
   text-decoration: none;
 }
 
-button,
-input,
-textarea,
-select {
+button, input, textarea, select {
   font: inherit;
 }
 
@@ -151,8 +138,7 @@ button {
 }
 
 
-img,
-svg {
+img, svg {
   display: block;
   max-width: 100%;
 }
@@ -161,9 +147,7 @@ img {
   height: auto;
 }
 
-input,
-textarea,
-select {
+input, textarea, select {
   color: var(--color-text-primary);
 }
 

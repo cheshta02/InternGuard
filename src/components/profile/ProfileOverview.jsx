@@ -1,4 +1,5 @@
 import ProfilePicture from "./ProfilePicture";
+import profile from "../../assets/profile.svg"
 
 export default function ProfileOverview({
     user,
@@ -8,7 +9,7 @@ export default function ProfileOverview({
     return (
         <section className="profile-overview">
             <ProfilePicture
-                src={profilePicture}
+                src={profilePicture || profile}
                 onChange={onProfilePictureChange}
             />
 
@@ -18,9 +19,7 @@ export default function ProfileOverview({
                 <span className="premium-badge">Guard+ Premium</span>
             )}
 
-            <p>
-                Current Plan: {user?.plan || "Free"}
-            </p>
+            <p>  Current Plan: {user?.plan || "Free"} </p>
         </section>
     );
 }

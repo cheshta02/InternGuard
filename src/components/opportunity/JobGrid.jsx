@@ -1,13 +1,9 @@
 import JobCard from "./JobCard";
+import EmptyState from "./EmptyState"
 
 const JobGrid = ({ jobs = [] }) => {
   if (jobs.length === 0) {
-    return (
-      <div className="job-grid-empty">
-        <h3>No opportunities found</h3>
-        <p>Try searching with a different job role or location.</p>
-      </div>
-    );
+    return (<EmptyState />);
   }
 
   return (

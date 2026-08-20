@@ -80,20 +80,14 @@ function Contact() {
       {/* Hero */}
       <section id="contact-hero" className="contact-hero">
         <p className="contact-hero-label">INTERNGUARD SUPPORT</p>
-
         <h1>We're Here to Help</h1>
-
         <p>
-          Questions, concerns, or something that doesn't look right? We're
-          here to help you make safer internship decisions.
+          Questions, concerns, or something that doesn't look right? We're here to help you make safer internship decisions.
         </p>
       </section>
 
       {/* Contact Information */}
-      <section
-        id="contact-information"
-        className="contact-information"
-      >
+      <section id="contact-information" className="contact-information">
         <p className="section-label">NEED SUPPORT?</p>
 
         <h2>How Can We Help?</h2>
@@ -123,8 +117,7 @@ function Contact() {
           <p className="section-label">SEND A MESSAGE</p>
           <h2>Get in Touch</h2>
           <p>
-            Tell us what you need help with. Whether you have found a suspicious internship, need help with an analysis, or simply want
-            to share feedback, your message matters.
+            Tell us what you need help with. Whether you have found a suspicious internship, need help with an analysis, or simply want to share feedback, your message matters.
           </p>
 
           <div className="contact-note">
@@ -137,14 +130,12 @@ function Contact() {
           <form id="contact-form" className="contact-form" onSubmit={handleSubmit}>
             <div className="form-group">
               <label htmlFor="name">Your Name</label>
-              <input id="name" name="name" type="text" placeholder="Enter your name" value={formData.name} onChange={handleChange}
-                required/>
+              <input id="name" name="name" type="text" placeholder="Enter your name" value={formData.name} onChange=     {handleChange} required/>
             </div>
 
             <div className="form-group">
               <label htmlFor="email">Email Address</label>
-              <input id="email" name="email" type="email" placeholder="Enter your email" value={formData.email} onChange={handleChange}
-                required/>
+              <input id="email" name="email" type="email" placeholder="Enter your email" value={formData.email} onChange={handleChange} required/>
             </div>
 
             <div className="form-group">
@@ -154,9 +145,7 @@ function Contact() {
                 <option value="">Select a topic</option>
 
                 {subjectOptions.map((option) => (
-                  <option value={option.value} key={option.value}>
-                    {option.label}
-                  </option>
+                  <option value={option.value} key={option.value}> {option.label} </option>
                 ))}
               </select>
             </div>
@@ -178,8 +167,7 @@ function Contact() {
         <p className="section-label">STAY PROTECTED</p>
         <h2>Think Before You Trust an Internship</h2>
         <p>
-          Never send money, sensitive documents, passwords, or personal financial information to an employer before verifying that the
-          opportunity is legitimate.
+          Never send money, sensitive documents, passwords, or personal financial information to an employer before verifying that the opportunity is legitimate.
         </p>
       </section>
     </main>

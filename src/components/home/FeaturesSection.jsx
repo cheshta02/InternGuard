@@ -32,8 +32,7 @@ const FeatureSection = () => {
         <p className="features-label">What InternGuard Offers</p>
         <h2>TOOLS FOR SMARTER INTERNSHIP SEARCHES</h2>
         <p className="features-text">
-          InternGuard brings the tools you need to discover opportunities,
-          evaluate risks, and make more informed internship decisions.
+          InternGuard brings the tools you need to discover opportunities, evaluate risks, and make more informed internship decisions.
         </p>
       </div>
 

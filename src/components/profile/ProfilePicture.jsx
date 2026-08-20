@@ -1,4 +1,5 @@
 import { useRef } from "react";
+import profile from "../../assets/profile.svg";
 
 export default function ProfilePicture({ src, onChange }) {
     const fileInputRef = useRef(null);
@@ -19,20 +20,8 @@ export default function ProfilePicture({ src, onChange }) {
 
     return (
         <>
-            <img
-                src={src || "/assets/default-profile.svg"}
-                alt="Profile"
-                className="profile-picture"
-                onClick={() => fileInputRef.current.click()}
-            />
-
-            <input
-                ref={fileInputRef}
-                type="file"
-                accept="image/*"
-                onChange={handleImageChange}
-                hidden
-            />
+            <img src={src || profile} alt="Profile" className="profile-picture" onClick={() => fileInputRef.current.click()} />
+            <input ref={fileInputRef} type="file" accept="image/*" onChange={handleImageChange} hidden/>
         </>
     );
 }

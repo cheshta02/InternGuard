@@ -19,9 +19,7 @@ const MissionSection = () => {
       <div className="mission-wrap">
         <div className="mission-text">
           <span className="label">Our Mission</span>
-          <h2>
-            Helping students make <span> smarter career choices.</span>
-          </h2>
+          <h2> Helping students make <span> smarter career choices.</span> </h2>
           <p>
             Finding an internship should be about more than getting an offer.Students need to know whether an opportunity is genuine, relevant,and worth their time.
           </p>

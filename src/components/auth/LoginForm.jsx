@@ -72,63 +72,31 @@ export default function LoginForm() {
                 <h2>Welcome back</h2>
                 <p>Login to your account </p>
                 <div className="form-group">
-                    <label htmlFor="login-email">
-                        Email Address
-                    </label>
-
-                    <input
-                        id="login-email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Enter your email"
-                        autoComplete="email"
-                    />
+                    <label htmlFor="login-email"> Email Address </label>
+                    <input id="login-email" name="email" type="email" value={formData.email} onChange={handleChange}
+                     placeholder="Enter your email" autoComplete="email"/>
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="login-password">
-                        Password
-                    </label>
-
-                    <input
-                        id="login-password"
-                        name="password"
-                        type="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        placeholder="Enter your password"
-                        autoComplete="current-password"
+                    <label htmlFor="login-password"> Password </label>
+                    <input id="login-password" name="password" type="password" value={formData.password} onChange={handleChange}
+                      placeholder="Enter your password" autoComplete="current-password"
                     />
                 </div>
 
                 <div className="forgot-password">
-                    <Link to="/forgot-password">
-                        Forgot Password?
-                    </Link>
+                    <Link to="/register"> Forgot Password? </Link>
                 </div>
             </div>
 
-            {error && (
-                <p className="form-error" role="alert">
-                    {error}
-                </p>
-            )}
+            {error && ( <p className="form-error" role="alert"> {error} </p> )}
 
-            <button
-                type="submit"
-                disabled={isSubmitting}
-            >
-                {isSubmitting ? "Logging in..." : "Login"}
-            </button>
+            <button type="submit" disabled={isSubmitting}> {isSubmitting ? "Logging in..." : "Login"} </button>
 
             <div className="register-link">
                 <p>
                     Don't have an account?{" "}
-                    <Link to="/register">
-                        Create one
-                    </Link>
+                    <Link to="/register"> Create one </Link>
                 </p>
             </div>
         </form>

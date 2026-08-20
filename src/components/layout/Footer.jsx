@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom";
 import "../../styles/footer.css";
+import logo from "../../assets/logo.svg"
+
 function Footer() {
   return (
     <footer id="footer" className="footer">
@@ -7,7 +9,7 @@ function Footer() {
       {/* Logo and Description */}
       <div id="footer-logo" className="footer-logo">
         <Link to="/">
-          <img src="/assets/logo.svg" alt="InternGuard" />
+          <img src={logo} alt="InternGuard" />
         </Link>
 
         <p>
@@ -23,7 +25,7 @@ function Footer() {
           <Link to="/" className="footer-link">Home</Link>
           <Link to="/analyze" className="footer-link">Analyze</Link>
           <Link to="/directory" className="footer-link">Scam insights</Link>
-          <Link to="/opportunities" className="footer-link">Opportunities</Link>
+          <Link to="/opportunity" className="footer-link">Opportunities</Link>
           <Link to="/about" className="footer-link">About Us</Link>
           <Link to="/contact" className="footer-link">Contact</Link>
 
