@@ -24,9 +24,15 @@ export function AuthProvider({ children }) {
   const logout = () => {
     setUser(null);
   };
+  const updateProfilePicture = (profilePicture) => {
+    setUser(prevUser => ({
+        ...prevUser,
+        profilePicture
+    }));
+   }; 
 
   return (
-    <AuthContext.Provider value={{ user, register, login, logout }}>
+    <AuthContext.Provider value={{ user, register, login, logout ,updateProfilePicture }}>
       {children}
     </AuthContext.Provider>
   );

@@ -8,10 +8,7 @@ export default function ProfileOverview({
 }) {
     return (
         <section className="profile-overview">
-            <ProfilePicture
-                src={profilePicture || profile}
-                onChange={onProfilePictureChange}
-            />
+            <ProfilePicture  src={profilePicture || profile}  onChange={onProfilePictureChange}/>
 
             <h1>{user?.fullName || "User"}</h1>
 

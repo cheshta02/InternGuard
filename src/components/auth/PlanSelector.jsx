@@ -43,31 +43,16 @@ export default function PlanSelector({
     return (
         <div className="plan-selector">
             <label className="free-plan-option">
-                <input
-                    type="radio"
-                    name="plan"
-                    value="free"
-                    checked={selectedPlan === "free"}
-                    onChange={() => onPlanChange("free")}
-                />
-
+                <input type="radio" name="plan" value="free"  checked={selectedPlan === "free"}  onChange={() => onPlanChange("free")}/>
                 Continue with Free
             </label>
 
-            <p className="plan-selector-note">
-                Free features are available to everyone. Upgrade to Guard+ for premium features.
-            </p>
+            <p className="plan-selector-note"> Free features are available to everyone. Upgrade to Guard+ for premium features.</p>
 
             <div className="plan-cards">
                 {plans.map((plan) => (
-                    <PlanCard
-                        key={plan.id}
-                        name={plan.name}
-                        price={plan.price}
-                        duration={plan.duration}
-                        features={plan.features}
-                        selected={selectedPlan === plan.id}
-                        onSelect={() => onPlanChange(plan.id)}
+                    <PlanCard key={plan.id} name={plan.name}  price={plan.price} duration={plan.duration} features={plan.features}
+                        selected={selectedPlan === plan.id} onSelect={() => onPlanChange(plan.id)}
                     />
                 ))}
             </div>

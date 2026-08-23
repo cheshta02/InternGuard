@@ -9,13 +9,9 @@ import profile from "../../assets/profile.svg"
 
 export default function ProfileDrawer() {
     const navigate = useNavigate();
-    const { user, logout } = useAuth();
+    const { user, logout, updateProfilePicture } = useAuth();
 
-    const [isOpen, setIsOpen] = useState(false);
-
-    const [profilePicture, setProfilePicture] = useState(profile);
-
-    const handleProfilePictureChange = (picture) => { setProfilePicture(picture); };
+     const [isOpen, setIsOpen] = useState(false);
 
     const handleHistory = () => {
         setIsOpen(false);
@@ -36,15 +32,14 @@ export default function ProfileDrawer() {
     return (
         <div className="profile-drawer-container">
 
-            <img src={profilePicture} alt="Profile" className="profile-button" onClick={() => setIsOpen(!isOpen)} />
+           <img src={user?.profilePicture || profile} alt="Profile" className="profile-button" onClick={() => setIsOpen(!isOpen)}/>
 
             {isOpen && (
                 <aside className="profile-drawer">
                     <button type="button" className="profile-drawer-close" onClick={() => setIsOpen(false)} aria-label="Close profile" > × </button>
 
-                    <ProfilePicture  src={profilePicture}  onChange={handleProfilePictureChange}/>
+                   <ProfilePicture src={user?.profilePicture || profile} onChange={updateProfilePicture}/>
                     <ProfileDetails user={user} />
-
                     <button type="button" onClick={handleHistory}> History </button>
                     <button type="button" onClick={handleUpgrade}> Upgrade Plan</button>
                     <button type="button" onClick={handleLogout}> Sign Out</button>

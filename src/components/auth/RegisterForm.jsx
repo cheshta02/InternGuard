@@ -106,8 +106,6 @@ export default function RegisterForm() {
                 plan: selectedPlan,
             });
 
-
-
             navigate("/");
         } catch (err) {
             setError(
@@ -141,50 +139,23 @@ export default function RegisterForm() {
                 <h2>Create your InternGuard account</h2>
                 <p className="register-intro"> Join InternGuard and start your safe journey today. </p>
                 <div className="form-group">
-                    <label htmlFor="register-full-name">
-                        Full Name
-                    </label>
-
-                    <input
-                        id="register-full-name"
-                        name="fullName"
-                        type="text"
-                        value={formData.fullName}
-                        onChange={handleChange}
-                        placeholder="Enter your full name"
-                        autoComplete="name"
+                    <label htmlFor="register-full-name"> Full Name </label>
+                    <input  id="register-full-name"  name="fullName"  type="text"  value={formData.fullName}  onChange={handleChange}
+                        placeholder="Enter your full name" autoComplete="name"
                     />
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="register-email">
-                        Email Address
-                    </label>
-
-                    <input
-                        id="register-email"
-                        name="email"
-                        type="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="Enter your email"
-                        autoComplete="email"
+                    <label htmlFor="register-email"> Email Address </label>
+                    <input  id="register-email" name="email" type="email" value={formData.email} onChange={handleChange}
+                        placeholder="Enter your email" autoComplete="email"
                     />
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="register-contact">
-                        Contact Number
-                    </label>
-
-                    <input
-                        id="register-contact"
-                        name="contact"
-                        type="tel"
-                        value={formData.contact}
-                        onChange={handleChange}
-                        placeholder="Enter your contact number"
-                        autoComplete="tel"
+                    <label htmlFor="register-contact"> Contact Number </label>
+                    <input id="register-contact" name="contact" type="tel" value={formData.contact} onChange={handleChange}
+                        placeholder="Enter your contact number" autoComplete="tel"
                     />
                 </div>
             </div>
@@ -193,109 +164,55 @@ export default function RegisterForm() {
                 <h2>Secure your account</h2>
 
                 <div className="form-group">
-                    <label htmlFor="register-password">
-                        Set Password
-                    </label>
-
-                    <input
-                        id="register-password"
-                        name="password"
-                        type="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        placeholder="Create a password"
-                        autoComplete="new-password"
+                    <label htmlFor="register-password"> Set Password </label>
+                    <input id="register-password" name="password" type="password" value={formData.password} onChange={handleChange}
+                        placeholder="Create a password" autoComplete="new-password"
                     />
 
-                    <small>
-                        Password must contain at least 8 characters.
-                    </small>
+                    <small> Password must contain at least 8 characters.</small>
                 </div>
 
                 <div className="form-group">
-                    <label htmlFor="register-confirm-password">
-                        Confirm Password
-                    </label>
+                    <label htmlFor="register-confirm-password">Confirm Password </label>
 
-                    <input
-                        id="register-confirm-password"
-                        name="confirmPassword"
-                        type="password"
-                        value={formData.confirmPassword}
-                        onChange={handleChange}
-                        placeholder="Re-enter your password"
-                        autoComplete="new-password"
+                    <input id="register-confirm-password"  name="confirmPassword"  type="password"  value={formData.confirmPassword}
+                        onChange={handleChange} placeholder="Re-enter your password"  autoComplete="new-password"
                     />
                 </div>
             </div>
 
             <div className="form-section">
                 <h2>Choose your plan</h2>
-
-                <PlanSelector
-                    selectedPlan={selectedPlan}
-                    onPlanChange={setSelectedPlan}
-                />
+                <PlanSelector selectedPlan={selectedPlan} onPlanChange={setSelectedPlan}/>
             </div>
 
             <div className="social-registration">
                 <p>Or continue with</p>
 
                 <div>
-                    <button
-                        type="button"
-                        onClick={handleGoogleRegister}
-                    >
-                        Continue with Google
-                    </button>
-
-                    <button
-                        type="button"
-                        onClick={handleLinkedInRegister}
-                    >
-                        Continue with LinkedIn
-                    </button>
+                    <button type="button" onClick={handleGoogleRegister}> Continue with Google </button>
+                    <button type="button" onClick={handleLinkedInRegister}> Continue with LinkedIn </button>
                 </div>
             </div>
 
             <div className="terms-section">
                 <label htmlFor="register-terms">
-                    <input
-                        id="register-terms"
-                        name="termsAccepted"
-                        type="checkbox"
-                        checked={formData.termsAccepted}
-                        onChange={handleChange}
+                    <input  id="register-terms"  name="termsAccepted"  type="checkbox"  checked={formData.termsAccepted}
+                     onChange={handleChange}
                     />
-
-                    <span>
-                        I agree to the Terms of Service and Privacy Policy.
-                    </span>
+                    <span> I agree to the Terms of Service and Privacy Policy.  </span>
                 </label>
             </div>
 
             {error && (
-                <p className="form-error" role="alert">
-                    {error}
-                </p>
+                <p className="form-error" role="alert"> {error}</p>
             )}
 
-            <button
-                type="submit"
-                disabled={isSubmitting}
-            >
-                {isSubmitting
-                    ? "Creating Account..."
-                    : "Create Account"}
+            <button type="submit" disabled={isSubmitting}>
+                {isSubmitting ? "Creating Account..." : "Create Account"}
             </button>
-            <p className="auth-switch">
-                Already have an account?{" "}
-                <button
-                    type="button"
-                    onClick={() => navigate("/auth")}
-                >
-                    Login
-                </button>
+            <p className="auth-switch"> Already have an account?{" "}
+                <button type="button"  onClick={() => navigate("/auth")}> Login </button>
             </p>
         </form>
     );

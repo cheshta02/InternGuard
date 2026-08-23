@@ -52,10 +52,7 @@ export default function LoginForm() {
                 password: formData.password,
             });
 
-            const destination =
-                location.state?.from || "/";
-
-            navigate(destination, { replace: true });
+            navigate("/");
         } catch (err) {
             setError(
                 err?.message ||
