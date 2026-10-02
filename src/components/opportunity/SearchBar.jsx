@@ -12,11 +12,24 @@ function SearchBar({ onSearch, loading }) {
 
   return (
     <form className="search-container" onSubmit={handleSubmit}>
-      <input type="text" value={query} onChange={(e) => setQuery(e.target.value)} placeholder="e.g. Data Science internship"/>
+      <input
+        type="text"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        placeholder="e.g. Data Science internship"
+      />
 
-      <input type="text" value={location} onChange={(e) => setLocation(e.target.value)} placeholder="Location"/>
+      <input
+        type="text"
+        value={location}
+        onChange={(e) => setLocation(e.target.value)}
+        placeholder="Location"
+      />
 
-      <button type="submit" disabled={loading}> {loading ? "Searching..." : "Search"} </button>
+      <button type="submit" disabled={loading}>
+        {" "}
+        {loading ? "Searching..." : "Search"}{" "}
+      </button>
     </form>
   );
 }
