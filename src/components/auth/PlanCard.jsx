@@ -16,9 +16,7 @@ export default function PlanCard({
             <div className="plan-price"> <strong>{price}</strong> </div>
 
             <ul className="plan-features">
-                {features.map((feature) => (
-                    <li key={feature}>✓ {feature}</li>
-                ))}
+                {features.map((feature) => (<li key={feature}>✓ {feature}</li>))}
             </ul>
 
             <button type="button" onClick={onSelect} className="plan-select-button">

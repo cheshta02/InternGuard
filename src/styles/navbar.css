@@ -116,10 +116,6 @@
   fill: currentColor;
 }
 
-/* =========================================
-   HAMBURGER MENU
-   ========================================= */
-
 .navbar-toggle {
   display: none;
   width: 42px;
@@ -148,11 +144,6 @@
     transform 0.3s ease,
     opacity 0.3s ease;
 }
-
-
-/* =========================================
-   HAMBURGER ANIMATION
-   ========================================= */
 
 .navbar-toggle.open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);

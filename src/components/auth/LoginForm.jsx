@@ -19,12 +19,7 @@ export default function LoginForm() {
 
     const handleChange = (event) => {
         const { name, value } = event.target;
-
-        setFormData((previous) => ({
-            ...previous,
-            [name]: value,
-        }));
-
+        setFormData((previous) => ({ ...previous, [name]: value,}));
         setError("");
     };
 
@@ -71,7 +66,8 @@ export default function LoginForm() {
                 <div className="form-group">
                     <label htmlFor="login-email"> Email Address </label>
                     <input id="login-email" name="email" type="email" value={formData.email} onChange={handleChange}
-                     placeholder="Enter your email" autoComplete="email"/>
+                      placeholder="Enter your email" autoComplete="email"
+                    />
                 </div>
 
                 <div className="form-group">
@@ -91,10 +87,7 @@ export default function LoginForm() {
             <button type="submit" disabled={isSubmitting}> {isSubmitting ? "Logging in..." : "Login"} </button>
 
             <div className="register-link">
-                <p>
-                    Don't have an account?{" "}
-                    <Link to="/register"> Create one </Link>
-                </p>
+                <p>  Don't have an account?{" "}  <Link to="/register"> Create one </Link> </p>
             </div>
         </form>
     );

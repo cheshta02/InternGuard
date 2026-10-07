@@ -5,6 +5,15 @@ function ScamDetails({ scam, onClose }) {
 
   const riskClass = scam.risk.toLowerCase();
 
+  const detailItems = [
+    { label: "Location", value: scam.location },
+    { label: "Type", value: scam.type },
+    { label: "Category", value: scam.category },
+    { label: "Reports", value: scam.reported },
+    { label: "Reported On", value: scam.date },
+    { label: "Source", value: scam.source }
+  ];
+
   return (
     <div className="scam-modal" role="dialog" aria-modal="true">
       <div className="scam-overlay" onClick={onClose}></div>
@@ -12,44 +21,18 @@ function ScamDetails({ scam, onClose }) {
       <div className="scam-details">
 
         <div className="detail-head">
-          <span className={`risk risk-${riskClass}`}>
-            {scam.risk} Risk
-          </span>
-
+          <span className={`risk risk-${riskClass}`}> {scam.risk} Risk </span>
           <h2>{scam.company}</h2>
           <p>{scam.role}</p>
         </div>
 
         <div className="detail-grid">
-          <div>
-            <span>Location</span>
-            <strong>{scam.location}</strong>
-          </div>
-
-          <div>
-            <span>Type</span>
-            <strong>{scam.type}</strong>
-          </div>
-
-          <div>
-            <span>Category</span>
-            <strong>{scam.category}</strong>
-          </div>
-
-          <div>
-            <span>Reports</span>
-            <strong>{scam.reported}</strong>
-          </div>
-
-          <div>
-            <span>Reported On</span>
-            <strong>{scam.date}</strong>
-          </div>
-
-          <div>
-            <span>Source</span>
-            <strong>{scam.source}</strong>
-          </div>
+          {detailItems.map((item, index) => (
+            <div key={index}>
+              <span>{item.label}</span>
+              <strong>{item.value}</strong>
+            </div>
+          ))}
         </div>
 
         <div className="detail-section">
@@ -59,12 +42,7 @@ function ScamDetails({ scam, onClose }) {
 
         <div className="detail-section">
           <h3>Warning Signs</h3>
-
-          <ul>
-            {scam.warningSigns.map((sign, index) => (
-              <li key={index}>{sign}</li>
-            ))}
-          </ul>
+          <ul> {scam.warningSigns.map((sign, index) => ( <li key={index}>{sign}</li>))} </ul>
         </div>
 
         <div className="detail-warning">

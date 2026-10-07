@@ -40,11 +40,9 @@ const Opportunities = () => {
         keyword: filters.search.trim() || "internship",
         location: filters.location || "India",
       });
-
       setJobs(result.jobs);
     } catch (err) {
       console.error(err);
-
       setError(err.message || "Unable to load opportunities.");
     } finally {
       setLoading(false);
@@ -53,18 +51,12 @@ const Opportunities = () => {
 
   useEffect(() => {
     if (!hasPremiumAccess) return;
-
-    const timer = setTimeout(() => {
-      loadJobs();
-    }, 600);
-
+    const timer = setTimeout(() => {loadJobs();}, 600);
     return () => clearTimeout(timer);
   }, [filters.search, filters.location, hasPremiumAccess]);
 
   const filteredJobs = useMemo(() => {
     let result = [...jobs];
-
-    /* SEARCH*/
 
     if (filters.search.trim()) {
       const search = filters.search.toLowerCase();
@@ -79,23 +71,14 @@ const Opportunities = () => {
       });
     }
 
-    /* WORK MODE */
-
     if (filters.workMode !== "All") {
       result = result.filter((job) => job.workMode === filters.workMode);
     }
 
-    /* CATEGORY */
-
     if (filters.category.trim()) {
       const category = filters.category.toLowerCase();
-
-      result = result.filter((job) =>
-        job.category.toLowerCase().includes(category),
-      );
+      result = result.filter((job) => job.category.toLowerCase().includes(category),);
     }
-
-    /* SORT */
 
     if (filters.sort === "salary-high") {
       result.sort((a, b) => b.salaryMin - a.salaryMin);
@@ -128,16 +111,11 @@ const Opportunities = () => {
     <div className="opportunities-page">
       <MainSection />
 
-      <JobFilters
-        filters={filters}
-        setFilters={setFilters}
-        onClear={clearFilters}
-      />
+      <JobFilters filters={filters} setFilters={setFilters} onClear={clearFilters}/>
 
       {loading && (
         <div className="jobs-state">
           <div className="loader"></div>
-
           <p>Finding opportunities...</p>
         </div>
       )}
@@ -145,7 +123,6 @@ const Opportunities = () => {
       {!loading && error && (
         <div className="jobs-state error-state">
           <h3>Unable to load opportunities</h3>
-
           <p> {error}</p>
           <button onClick={loadJobs}> Try Again </button>
         </div>
@@ -154,7 +131,6 @@ const Opportunities = () => {
       {!loading && !error && filteredJobs.length === 0 && (
         <div className="jobs-state">
           <h3>No opportunities found</h3>
-
           <p>Try changing your search or filters.</p>
         </div>
       )}
@@ -162,22 +138,16 @@ const Opportunities = () => {
       {!loading && !error && filteredJobs.length > 0 && (
         <>
           <div className="results-header">
-            <p>
-              Showing <strong> {filteredJobs.length} </strong> opportunities
-            </p>
+            <p> Showing <strong> {filteredJobs.length} </strong> opportunities </p>
           </div>
 
           <div className="jobs-grid">
-            {filteredJobs.map((job) => (
-              <JobCard key={job.id} job={job} onViewDetails={setSelectedJob} />
-            ))}
+            {filteredJobs.map((job) => (<JobCard key={job.id} job={job} onViewDetails={setSelectedJob} />))}
           </div>
         </>
       )}
 
-      {selectedJob && (
-        <JobDetails job={selectedJob} onClose={() => setSelectedJob(null)} />
-      )}
+      {selectedJob && (<JobDetails job={selectedJob} onClose={() => setSelectedJob(null)} />)}
     </div>
   );
 };

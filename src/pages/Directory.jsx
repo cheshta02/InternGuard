@@ -15,23 +15,14 @@ function Directory() {
     const searchText = filters.search.trim().toLowerCase();
 
     const filteredScams = ScamData.filter((scam) => {
-      const matchesSearch =
-        scam.company.toLowerCase().includes(searchText) ||
-        scam.role.toLowerCase().includes(searchText) ||
+      const matchesSearch = scam.company.toLowerCase().includes(searchText) || scam.role.toLowerCase().includes(searchText) ||
         scam.category.toLowerCase().includes(searchText);
 
       const matchesRisk = filters.risk === "All" || scam.risk === filters.risk;
-
       const matchesType = filters.type === "All" || scam.type === filters.type;
-
       const matchesLocation = filters.location === "All" || scam.location === filters.location;
 
-      return (
-        matchesSearch &&
-        matchesRisk &&
-        matchesType &&
-        matchesLocation
-      );
+      return ( matchesSearch && matchesRisk && matchesType && matchesLocation);
     });
 
     setScams(filteredScams);
@@ -58,12 +49,7 @@ function Directory() {
           <div className="directory-head">
             <div>
               <h2>Reported Opportunities</h2>
-
-              <p>
-                {scams.length}{" "}
-                {scams.length === 1 ? "report" : "reports"}{" "}
-                found
-              </p>
+              <p> {scams.length}{" "} {scams.length === 1 ? "report" : "reports"}{" "} found </p>
             </div>
           </div>
 
@@ -72,9 +58,7 @@ function Directory() {
         </div>
       </section>
 
-      {selectedScam && (
-        <ScamDetails scam={selectedScam} onClose={handleClose} />
-      )}
+      {selectedScam && ( <ScamDetails scam={selectedScam} onClose={handleClose} />)}
 
     </main>
   );

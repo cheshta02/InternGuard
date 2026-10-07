@@ -5,9 +5,7 @@ const AuthContext = createContext();
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
 
-  const register = async (userData) => {
-    setUser(userData);
-  };
+  const register = async (userData) => { setUser(userData)};
 
   const login = async ({ email, password }) => {
     if (!user) {
@@ -25,16 +23,11 @@ export function AuthProvider({ children }) {
     setUser(null);
   };
   const updateProfilePicture = (profilePicture) => {
-    setUser(prevUser => ({
-        ...prevUser,
-        profilePicture
-    }));
+    setUser(prevUser => ({...prevUser, profilePicture}));
    }; 
 
   return (
-    <AuthContext.Provider value={{ user, register, login, logout ,updateProfilePicture }}>
-      {children}
-    </AuthContext.Provider>
+    <AuthContext.Provider value={{ user, register, login, logout ,updateProfilePicture }}> {children} </AuthContext.Provider>
   );
 }
 

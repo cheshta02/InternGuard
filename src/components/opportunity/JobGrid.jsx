@@ -8,9 +8,7 @@ const JobGrid = ({ jobs = [], onViewDetails }) => {
 
   return (
     <div className="job-grid">
-      {jobs.map((job) => (
-        <JobCard key={job.id} job={job} onViewDetails={onViewDetails} />
-      ))}
+      {jobs.map((job) => ( <JobCard key={job.id} job={job} onViewDetails={onViewDetails} />))}
     </div>
   );
 };

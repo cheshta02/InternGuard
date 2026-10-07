@@ -17,20 +17,13 @@ export default function RegisterForm() {
         termsAccepted: false,
     });
 
-    // Free is selected by default.
     const [selectedPlan, setSelectedPlan] = useState("free");
-
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
 
     const handleChange = (event) => {
         const { name, value, type, checked } = event.target;
-
-        setFormData((previous) => ({
-            ...previous,
-            [name]: type === "checkbox" ? checked : value,
-        }));
-
+        setFormData((previous) => ({ ...previous, [name]: type === "checkbox" ? checked : value,}));
         setError("");
     };
 
