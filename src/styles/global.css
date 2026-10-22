@@ -173,3 +173,12 @@ select:focus-visible {
   background: var(--color-accent);
   color: var(--color-text-light);
 }
+
+input,select,textarea {
+  font-family: inherit;
+}
+
+select {
+  width: 100%;
+  box-sizing: border-box;
+}

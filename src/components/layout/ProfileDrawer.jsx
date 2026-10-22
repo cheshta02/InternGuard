@@ -11,7 +11,7 @@ export default function ProfileDrawer() {
     const navigate = useNavigate();
     const { user, logout, updateProfilePicture } = useAuth();
 
-     const [isOpen, setIsOpen] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleHistory = () => {
         setIsOpen(false);
@@ -37,12 +37,11 @@ export default function ProfileDrawer() {
             {isOpen && (
                 <aside className="profile-drawer">
                     <button type="button" className="profile-drawer-close" onClick={() => setIsOpen(false)} aria-label="Close profile" > × </button>
-
-                   <ProfilePicture src={user?.profilePicture || profile} onChange={updateProfilePicture}/>
+                    <ProfilePicture src={user?.profilePicture || profile} onChange={updateProfilePicture}/>
                     <ProfileDetails user={user} />
                     <button type="button" onClick={handleHistory}> History </button>
                     <button type="button" onClick={handleUpgrade}> Upgrade Plan</button>
-                    <button type="button" onClick={handleLogout}> Sign Out</button>
+                    <button type="button" onClick={handleLogout}> Log Out</button>
 
                 </aside>
             )}

@@ -1,212 +1,189 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useForm, useFieldArray } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
 
 import PlanSelector from "./PlanSelector";
+import Input from "../common/Input";
+import FormError from "../common/FormError";
+
 import { useAuth } from "../../context/AuthContext";
+import { registerSchema } from "../../schemas/authSchemas";
+
+const securityQuestionOptions = [
+  "What is your childhood nickname?",
+  "What city were you born in?",
+  "What's Your Dream Company?",
+  "What is your favorite subject?",
+];
 
 export default function RegisterForm() {
-    const navigate = useNavigate();
-    const { register } = useAuth();
+  const navigate = useNavigate();
+  const { register: registerUser } = useAuth();
+  const [serverError, setServerError] = useState("");
 
-    const [formData, setFormData] = useState({
-        fullName: "",
-        email: "",
-        contact: "",
-        password: "",
-        confirmPassword: "",
-        termsAccepted: false,
-    });
+  const {
+    register, control, handleSubmit, watch, setValue,
+    formState: {
+      errors,
+      isSubmitting,
+    },
+  } = useForm({
+    resolver: zodResolver(registerSchema),
 
-    const [selectedPlan, setSelectedPlan] = useState("free");
-    const [error, setError] = useState("");
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    defaultValues: {
+      fullName: "",
+      email: "",
+      contact: "",
+      password: "",
+      confirmPassword: "",
 
-    const handleChange = (event) => {
-        const { name, value, type, checked } = event.target;
-        setFormData((previous) => ({ ...previous, [name]: type === "checkbox" ? checked : value,}));
-        setError("");
-    };
+      securityQuestions: [
+        {question: "", answer: ""},
+        {question: "", answer: ""},
+        {question: "", answer: ""},
+      ],
 
-    const validateForm = () => {
-        if (!formData.fullName.trim()) {
-            return "Please enter your full name.";
-        }
+      selectedPlan: "free",
+      termsAccepted: false,
+    },
 
-        if (!formData.email.trim()) {
-            return "Please enter your email address.";
-        }
+    mode: "onBlur",
+  });
 
-        if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
-            return "Please enter a valid email address.";
-        }
+  const {
+    fields: securityFields,
+  } = useFieldArray({
+    control,
+    name: "securityQuestions",
+  });
 
-        if (!formData.contact.trim()) {
-            return "Please enter your contact number.";
-        }
+  const selectedPlan = watch("selectedPlan");
+  const password = watch("password", "");
 
-        if (!/^[0-9+\-\s()]{7,20}$/.test(formData.contact.trim())) {
-            return "Please enter a valid contact number.";
-        }
+  const passwordRequirements = [
+    {label: "At least 8 characters", valid: password.length >= 8 },
+    {label: "At least one uppercase letter",valid: /[A-Z]/.test(password)},
+    {label: "At least one lowercase letter", valid: /[a-z]/.test(password)},
+    {label: "At least one number",valid: /[0-9]/.test(password)},
+    {label: "At least one special character",valid: /[!@#$%^&*(),.?":{}|<>]/.test(password)},
+  ];
 
-        if (!formData.password) {
-            return "Please create a password.";
-        }
+  const onSubmit = async (data) => {
+    setServerError("");
 
-        if (formData.password.length < 8) {
-            return "Password must contain at least 8 characters.";
-        }
+    try {
+      await registerUser({
+        fullName: data.fullName.trim(),
+        email: data.email.trim().toLowerCase(),
+        contact: data.contact.trim(),
+        password: data.password,
+        plan: data.selectedPlan,
+        securityQuestions: data.securityQuestions,
+      });
+      navigate("/");
 
-        if (!formData.confirmPassword) {
-            return "Please confirm your password.";
-        }
+    } catch (err) {
+      setServerError(err?.message || "Unable to create your account. Please try again.");
+    }
+  };
 
-        if (formData.password !== formData.confirmPassword) {
-            return "Passwords do not match.";
-        }
+  return (
+    <form onSubmit={handleSubmit(onSubmit)} className="register-form" noValidate>
+      <div className="form-section">
+        <h2> Create your InternGuard account</h2>
+        <p className="register-intro"> Join InternGuard and start your safe journey today.</p>
+        <Input label="Full Name" type="text" placeholder="Enter your full name" {...register("fullName")} error={errors.fullName?.message}/>
+        <Input label="Email Address" type="email" placeholder="Enter your email" {...register("email")} error={errors.email?.message}/>
+        <Input label="Contact Number" type="tel" placeholder="Enter your contact number" {...register("contact")} error={errors.contact?.message}/>
+      </div>
 
-        if (!selectedPlan) {
-            return "Please select a plan.";
-        }
+      <div className="form-section password-section">
+        <h2> Secure your account </h2>
+        <div className="password-fields">
+          <div className="password-input">
+            <Input label="Set Password" type="password" placeholder="Create a password" {...register("password")}/>
+          </div>
+          <div className="password-input">
+            <Input label="Confirm Password" type="password" placeholder="Re-enter your password" {...register("confirmPassword")} error={errors.confirmPassword?.message}/>
+          </div>
+        </div>
 
-        if (!formData.termsAccepted) {
-            return "Please accept the Terms of Service and Privacy Policy.";
-        }
-
-        return "";
-    };
-
-    const handleSubmit = async (event) => {
-        event.preventDefault();
-
-        setError("");
-
-        const validationError = validateForm();
-
-        if (validationError) {
-            setError(validationError);
-            return;
-        }
-
-        setIsSubmitting(true);
-
-        try {
-
-            await register({
-                fullName: formData.fullName.trim(),
-                email: formData.email.trim().toLowerCase(),
-                contact: formData.contact.trim(),
-                password: formData.password,
-                plan: selectedPlan,
-            });
-
-            navigate("/");
-        } catch (err) {
-            setError(
-                err?.message ||
-                "Unable to create your account. Please try again."
-            );
-        } finally {
-            setIsSubmitting(false);
-        }
-    };
-
-    const handleGoogleRegister = () => {
-
-        console.log(
-            "Continue with Google selected. Selected plan:",
-            selectedPlan
-        );
-    };
-
-    const handleLinkedInRegister = () => {
-
-        console.log(
-            "Continue with LinkedIn selected. Selected plan:",
-            selectedPlan
-        );
-    };
-
-    return (
-        <form onSubmit={handleSubmit} className="register-form">
-            <div className="form-section">
-                <h2>Create your InternGuard account</h2>
-                <p className="register-intro"> Join InternGuard and start your safe journey today. </p>
-                <div className="form-group">
-                    <label htmlFor="register-full-name"> Full Name </label>
-                    <input  id="register-full-name"  name="fullName"  type="text"  value={formData.fullName}  onChange={handleChange}
-                        placeholder="Enter your full name" autoComplete="name"
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="register-email"> Email Address </label>
-                    <input  id="register-email" name="email" type="email" value={formData.email} onChange={handleChange}
-                        placeholder="Enter your email" autoComplete="email"
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label htmlFor="register-contact"> Contact Number </label>
-                    <input id="register-contact" name="contact" type="tel" value={formData.contact} onChange={handleChange}
-                        placeholder="Enter your contact number" autoComplete="tel"
-                    />
-                </div>
+        <div className="password-requirements">
+          <div className="password-requirements-header">
+            <span className="requirements-icon"> 🔐 </span>
+            <div>
+              <h4> Password requirements </h4>
+              <p> Your password must meet all of these requirements. </p>
             </div>
+          </div>
+          <div className="requirements-list">
+            {passwordRequirements.map((requirement) => (
+              <div key={requirement.label} className={`requirement-item ${ requirement.valid ? "valid" : "invalid"}`}>
+                <span className="requirement-check"> {requirement.valid ? "✓" : "×"} </span>
+                <span> {requirement.label} </span>
+              </div>
+            ))}
+          </div>
+        </div>
 
-            <div className="form-section">
-                <h2>Secure your account</h2>
+        {errors.password?.message && (<FormError message={errors.password.message}/>)}
+      </div>
 
-                <div className="form-group">
-                    <label htmlFor="register-password"> Set Password </label>
-                    <input id="register-password" name="password" type="password" value={formData.password} onChange={handleChange}
-                        placeholder="Create a password" autoComplete="new-password"
-                    />
+      <div className="form-section">
+        <h2> Account Recovery </h2>
+        <p> Choose three questions to help recover your account if you forget your password. </p>
 
-                    <small> Password must contain at least 8 characters.</small>
-                </div>
+        {securityFields.map((field, index) => (
 
-                <div className="form-group">
-                    <label htmlFor="register-confirm-password">Confirm Password </label>
+          <div className="form-group" key={field.id}>
 
-                    <input id="register-confirm-password"  name="confirmPassword"  type="password"  value={formData.confirmPassword}
-                        onChange={handleChange} placeholder="Re-enter your password"  autoComplete="new-password"
-                    />
-                </div>
-            </div>
+            <label htmlFor={`security-question-${index}`}> Security Question {index + 1} </label>
+            <select id={`security-question-${index}`} {...register( `securityQuestions.${index}.question` )}>
+              <option value=""> Select a security question </option>
+              {securityQuestionOptions.map((question) => ( <option key={question} value={question}> {question} </option>))}
+            </select>
 
-            <div className="form-section">
-                <h2>Choose your plan</h2>
-                <PlanSelector selectedPlan={selectedPlan} onPlanChange={setSelectedPlan}/>
-            </div>
+            <FormError message={errors.securityQuestions?.[index] ?.question?.message}/>
 
-            <div className="social-registration">
-                <p>Or continue with</p>
+            <Input label="Answer" type="text" placeholder="Enter your answer" {...register(`securityQuestions.${index}.answer`)}
+              error={errors.securityQuestions?.[index] ?.answer?.message}
+            />
 
-                <div>
-                    <button type="button" onClick={handleGoogleRegister}> Continue with Google </button>
-                    <button type="button" onClick={handleLinkedInRegister}> Continue with LinkedIn </button>
-                </div>
-            </div>
+          </div>
 
-            <div className="terms-section">
-                <label htmlFor="register-terms">
-                    <input  id="register-terms"  name="termsAccepted"  type="checkbox"  checked={formData.termsAccepted}
-                     onChange={handleChange}
-                    />
-                    <span> I agree to the Terms of Service and Privacy Policy.  </span>
-                </label>
-            </div>
+        ))}
 
-            {error && (
-                <p className="form-error" role="alert"> {error}</p>
-            )}
+        <FormError message={ errors.securityQuestions?.message}/>
 
-            <button type="submit" disabled={isSubmitting}>
-                {isSubmitting ? "Creating Account..." : "Create Account"}
-            </button>
-            <p className="auth-switch"> Already have an account?{" "}
-                <button type="button"  onClick={() => navigate("/auth")}> Login </button>
-            </p>
-        </form>
-    );
+      </div>
+
+      <div className="form-section">
+        <h2> Choose your plan </h2>
+        <PlanSelector selectedPlan={selectedPlan} onPlanChange={(value) => {
+            setValue( "selectedPlan", value, {shouldValidate: true, shouldDirty: true});
+          }}
+        />
+        <FormError message={errors.selectedPlan?.message}/>
+      </div>
+
+      <div className="terms-section">
+        <label htmlFor="register-terms">
+          <input id="register-terms" type="checkbox" {...register("termsAccepted")}/>
+          <span>I agree to the Terms of Service and Privacy Policy. </span>
+        </label>
+        <FormError message={ errors.termsAccepted?.message}/>
+      </div>
+
+      {serverError && (<p className="form-error" role="alert"> {serverError} </p>)}
+
+      <button type="submit" disabled={isSubmitting}> {isSubmitting ? "Creating Account..." : "Create Account"} </button>
+
+      <p className="auth-switch"> Already have an account?
+        {" "}
+        <button type="button" onClick={() => navigate("/auth")}> Login </button>
+      </p>
+
+    </form>
+  );
 }

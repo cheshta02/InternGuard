@@ -1,24 +1,17 @@
 import { Link } from "react-router-dom";
 import "../../styles/footer.css";
-import logo from "../../assets/logo.svg"
+import logo from "../../assets/logo.png"
 
 function Footer() {
   return (
     <footer id="footer" className="footer">
-    <div id="footer-content" className="footer-content">
-      {/* Logo and Description */}
-      <div id="footer-logo" className="footer-logo">
-        <Link to="/">
-          <img src={logo} alt="InternGuard" />
-        </Link>
+      <div id="footer-content" className="footer-content">
+      
+        <div id="footer-logo" className="footer-logo">
+          <Link to="/"> <img src={logo} alt="InternGuard" /> </Link>
+          <p> InternGuard helps students discover trusted internships, identify potential risks, and make safer career decisions with confidence. </p>
+        </div>
 
-        <p>
-          InternGuard helps students discover trusted internships, identify potential risks, and make safer career decisions
-          with confidence.
-        </p>
-      </div>
-
-        {/* Quick Links */}
         <div id="footer-quick-links" className="footer-section">
           <h4>Quick Links</h4>
           <Link to="/" className="footer-link">Home</Link>
@@ -29,14 +22,12 @@ function Footer() {
           <Link to="/contact" className="footer-link">Contact</Link>
         </div>
 
-        {/* Contact */}
         <div id="footer-contact" className="footer-section">
           <h4>Contact Info</h4>
           <p className="footer-text">support@internguard.com</p>
           <p className="footer-text">InternGuard Support</p>
         </div>
-    
-        {/* Social Links */}
+        
         <div id="footer-social" className="footer-section">
           <h4>Follow Us</h4>
           <a href="https://www.instagram.com" target="_blank" className="footer-social-link">Instagram</a>
@@ -46,9 +37,8 @@ function Footer() {
           <a href="https://t.me" target="_blank"  className="footer-social-link"> Telegram </a>
         </div>
 
-    </div>
+      </div>
 
-      {/* Copyright */}
       <div id="footer-bottom" className="footer-bottom">
         <p>© 2026 InternGuard. All Rights Reserved.</p>
       </div>
